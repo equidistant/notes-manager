@@ -5,7 +5,7 @@ Built using React and Redux.
 
 ### Live Preview
 
-notes.mislav.host
+[http://notes.mislav.host](http://notes.mislav.host)
 
 ### `npm start`
 
