@@ -1,26 +1,39 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { lazy, Suspense } from 'react'
+import { Provider } from 'react-redux'
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import { store } from './redux'
+import { ThemeProvider } from 'styled-components'
+import { GlobalStyle, theme } from './style'
+import { Navigation } from './modules'
 
-function App() {
+const Home = lazy(() => import ('./modules/home'))
+const Add = lazy(() => import ('./modules/add'))
+const Update = lazy(() => import ('./modules/update'))
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Provider store={store}>
+      <BrowserRouter>
+        <ThemeProvider theme={theme}>
+          <GlobalStyle />
+          <Navigation />
+          <Suspense fallback={<div>Loading...</div>}>
+            <Switch>
+              <Route exact path='/'>
+                <Home/>
+              </Route>
+              <Route exact path='/add'>
+                <Add/>
+              </Route>
+              <Route exact path='/update/:id'>
+                <Update/>
+              </Route>
+            </Switch>
+          </Suspense>
+        </ThemeProvider>
+      </BrowserRouter>
+    </Provider>
+  )
 }
 
-export default App;
+export default App

@@ -1,0 +1,8 @@
+export const GET_NOTES = 'GET_NOTES'
+export const SET_PAGES = 'SET_PAGES'
+export const REMOVE_NOTE = 'REMOVE_NOTE'
+export const UPDATE_NOTE = 'UPDATE_NOTE'
+export const ADD_NOTE = 'ADD_NOTE'
+export const MARK_DONE_NOTE = 'MARK_DONE_NOTE'
+export const SET_DISTINCT_TAGS = 'SET_DISTINCT_TAGS'
+export const NEW_FILTER = 'NEW_FILTER'
